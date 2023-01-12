@@ -1,0 +1,3 @@
+/mnt/d/developer/SortVisualizer/build/CMakeFiles/SortVisualizer.dir
+/mnt/d/developer/SortVisualizer/build/CMakeFiles/edit_cache.dir
+/mnt/d/developer/SortVisualizer/build/CMakeFiles/rebuild_cache.dir

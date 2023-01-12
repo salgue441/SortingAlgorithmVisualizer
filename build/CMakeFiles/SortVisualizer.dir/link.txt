@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/SortVisualizer.dir/main.cpp.o -o SortVisualizer   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib /usr/local/lib/libSDL2.so 
