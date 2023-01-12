@@ -397,8 +397,11 @@ CMakeFiles/SortVisualizer.dir/main.cpp.o: ../main.cpp \
   /usr/local/include/SDL2/SDL_timer.h \
   /usr/local/include/SDL2/SDL_version.h \
   /usr/local/include/SDL2/SDL_locale.h \
-  /usr/local/include/SDL2/SDL_misc.h
+  /usr/local/include/SDL2/SDL_misc.h \
+  ../sorts.h
 
+
+../sorts.h:
 
 /usr/local/include/SDL2/SDL_misc.h:
 
