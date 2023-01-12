@@ -16,6 +16,8 @@ int validate_input(int);
 void end_program();
 
 // Sorting Algorithms
+void bubble_sort_asc(std::vector<int> &, SDL_Renderer *);
+void bubble_sort_desc(std::vector<int> &, SDL_Renderer *);
 
 int main(int argc, char **argv)
 {
@@ -72,6 +74,16 @@ int main(int argc, char **argv)
     for (int i{}; i < 100; ++i)
         data_vec.push_back(d(rng));
 
+    std::vector<int> desorganized_data{data_vec};
+
+    // Output (desorganized)
+    std::cout << "Generated vector: " << std::endl;
+
+    for (auto i : data_vec)
+        std::cout << i << " ";
+
+    std::cout << std::endl;
+
     // Sorting
     bool running{true};
 
@@ -96,27 +108,19 @@ int main(int argc, char **argv)
         switch (option)
         {
         case 1:
-            for (unsigned int i{}; i < data_vec.size(); ++i)
-            {
-                for (unsigned j{i}; j < data_vec.size(); ++j)
-                {
-                    if (data_vec[j] < data_vec[i])
-                        std::swap(data_vec[j], data_vec[i]);
-
-                    SDL_SetRenderDrawColor(
-                        renderer, 0, 0, 0, 255);
-                    SDL_RenderClear(renderer);
-
-                    draw_states(data_vec, renderer, i, j);
-
-                    SDL_RenderPresent(renderer);
-                    SDL_Delay(5);
-                }
-            }
+            bubble_sort_asc(data_vec, renderer);
+            data_vec = desorganized_data;
 
             break;
 
-        case 6:
+        case 2:
+            bubble_sort_desc(data_vec, renderer);
+            data_vec = desorganized_data;
+
+            break;
+
+        case 11:
+            std::cout << "Closign application" << std::endl;
             running = false;
             break;
         }
@@ -134,9 +138,17 @@ void menu()
 {
     std::cout << "---- Sorting Algorithms Visualizer ----" << std::endl;
 
-    std::cout << "1. Bubble Sort Algorithm \n2. Selection Sort Algorithm"
-              << "\n3. Insertion Sort Algorithm \n4. Quick Sort Algorithm"
-              << "\n5. Merge Sort Algorithm \n6. Quit Application" << std::endl;
+    std::cout << "1. Bubble Sort (Ascending) Algorithm "
+              << "\n2. Bubble Sort (Descending) Algorithm "
+              << "\n3. Selection Sort (Ascending) Algorithm"
+              << "\n4. Selection Sort (Descending) Algorithm"
+              << "\n5. Insertion Sort (Ascending) Algorithm"
+              << "\n6. Insertion Sort (Descending) Algorithm"
+              << "\n7. Quick Sort (Ascending) Algorithm"
+              << "\n8. Quick Sort (Descending) Algorithm"
+              << "\n9. Merge Sort (Ascending) Algorithm"
+              << "\n10. Merge Sort (Descending) Algorithm"
+              << "\n11. Quit Application" << std::endl;
 }
 
 /**
@@ -203,4 +215,73 @@ void end_program()
         SDL_GetRenderer(SDL_GL_GetCurrentWindow()));
 
     SDL_Quit();
+}
+
+// Sorting methods
+/**
+ * @brief
+ * Bubble sort algorithm (ascending).
+ * @param data_vec Vector with the data
+ * @param renderer Renderer for window render
+ */
+void bubble_sort_asc(std::vector<int> &data_vec, SDL_Renderer *renderer)
+{
+    std::cout << std::endl
+              << std::endl
+              << "---- Bubble Sort (Ascending) Algorithm ----"
+              << std::endl
+              << std::endl;
+    ;
+
+    for (unsigned int i{}; i < data_vec.size(); ++i)
+    {
+        for (unsigned int j{}; j < data_vec.size() - 1; ++j)
+        {
+            if (data_vec.at(j) > data_vec.at(i))
+                std::swap(data_vec.at(j), data_vec.at(i));
+
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+            SDL_RenderClear(renderer);
+
+            draw_states(data_vec, renderer, i, j);
+
+            SDL_RenderPresent(renderer);
+            SDL_Delay(1);
+        }
+    }
+
+    SDL_RenderClear(renderer);
+}
+
+/**
+ * @brief
+ * Bubble sort algorithm (ascending).
+ * @param data_vec Vector with the data
+ * @param renderer Renderer for window render
+ */
+void bubble_sort_desc(std::vector<int> &data_vec, SDL_Renderer *renderer)
+{
+    std::cout << std::endl
+              << std::endl
+              << "---- Bubble Sort (Descending) Algorithm ----"
+              << std::endl
+              << std::endl;
+    ;
+
+    for (unsigned int i{}; i < data_vec.size(); ++i)
+    {
+        for (unsigned int j{}; j < data_vec.size() - 1; ++j)
+        {
+            if (data_vec.at(j) < data_vec.at(i))
+                std::swap(data_vec.at(i), data_vec.at(j));
+
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+            SDL_RenderClear(renderer);
+
+            draw_states(data_vec, renderer, i, j);
+
+            SDL_RenderPresent(renderer);
+            SDL_Delay(1);
+        }
+    }
 }
