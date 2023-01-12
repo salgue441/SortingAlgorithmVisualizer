@@ -61,7 +61,7 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    SDL_RenderSetScale(renderer, 10, 10);
+    SDL_RenderSetScale(renderer, 5, 5);
 
     std::random_device rng;
     std::uniform_int_distribution d(1, 99);
@@ -84,16 +84,45 @@ int main(int argc, char **argv)
             if (event.type == SDL_QUIT)
             {
                 running = false;
-
                 break;
             }
         }
 
-        for (unsigned int i{}; i < data_vec.size(); ++i)
-            for (unsigned j{i}; j < data_vec.size(); ++j)
-                if (data_vec[j] < data_vec[i])
-                    std::swap(data_vec[j], data_vec[i]);
+        menu();
+
+        std::cout << "Choose the algorithm you wish to see: ";
+        int option{validate_input(option)};
+
+        switch (option)
+        {
+        case 1:
+            for (unsigned int i{}; i < data_vec.size(); ++i)
+            {
+                for (unsigned j{i}; j < data_vec.size(); ++j)
+                {
+                    if (data_vec[j] < data_vec[i])
+                        std::swap(data_vec[j], data_vec[i]);
+
+                    SDL_SetRenderDrawColor(
+                        renderer, 0, 0, 0, 255);
+                    SDL_RenderClear(renderer);
+
+                    draw_states(data_vec, renderer, i, j);
+
+                    SDL_RenderPresent(renderer);
+                    SDL_Delay(5);
+                }
+            }
+
+            break;
+
+        case 6:
+            running = false;
+            break;
+        }
     }
+
+    end_program();
 }
 
 // Function Declaration
@@ -135,6 +164,7 @@ void draw_states(std::vector<int> &data_vec, SDL_Renderer *renderer,
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
         SDL_RenderDrawLine(renderer, index, 99, index, i);
+        ++index;
     }
 }
 
@@ -168,6 +198,7 @@ int validate_input(int input)
 void end_program()
 {
     SDL_DestroyWindow(SDL_GL_GetCurrentWindow());
+
     SDL_DestroyRenderer(
         SDL_GetRenderer(SDL_GL_GetCurrentWindow()));
 
