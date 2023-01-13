@@ -1,3 +1,14 @@
+/**
+ * @file main.cpp
+ * @author Carlos Salguero
+ * @brief Main file of the program
+ * @version 0.1
+ * @date 2023-01-12
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
 #include <iostream>
 #include <random>
 #include <ranges>
