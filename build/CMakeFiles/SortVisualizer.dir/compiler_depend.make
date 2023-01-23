@@ -398,7 +398,9 @@ CMakeFiles/SortVisualizer.dir/main.cpp.o: ../main.cpp \
   /usr/local/include/SDL2/SDL_version.h \
   /usr/local/include/SDL2/SDL_locale.h \
   /usr/local/include/SDL2/SDL_misc.h \
-  ../sorts.h
+  ../sorts.h \
+  /usr/include/c++/11/cassert \
+  /usr/include/assert.h
 
 
 ../sorts.h:
@@ -534,6 +536,8 @@ CMakeFiles/SortVisualizer.dir/main.cpp.o: ../main.cpp \
 /usr/local/include/SDL2/SDL_guid.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h:
+
+/usr/include/c++/11/cassert:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h:
 
@@ -788,6 +792,8 @@ CMakeFiles/SortVisualizer.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/11/bits/move.h:
 
 /usr/include/c++/11/bits/hash_bytes.h:
+
+/usr/include/assert.h:
 
 /usr/local/include/SDL2/SDL_clipboard.h:
 

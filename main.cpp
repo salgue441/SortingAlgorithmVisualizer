@@ -152,6 +152,11 @@ int main(int argc, char **argv)
             break;
 
         case 7:
+            quick_sort_ascending(data_vec, renderer);
+            (std::ranges::is_sorted(data_vec))
+                ? std::cout << "Sorted" << std::endl
+                : std::cout << "Not sorted" << std::endl;
+
             data_vec = desorganized_data;
 
             break;

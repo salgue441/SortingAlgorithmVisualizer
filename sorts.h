@@ -13,6 +13,10 @@
 #define SORTS_H
 
 #include <vector>
+#include <algorithm>
+#include <cassert>
+#include <functional>
+#include <iterator>
 
 // SDL Libraries
 #include <SDL2/SDL.h>
@@ -240,6 +244,26 @@ void insertion_sort_descending(std::vector<T> &data_vec, SDL_Renderer *renderer)
     SDL_RenderClear(renderer);
 }
 
+template <typename T>
+T partition(std::vector<T> &data_vec, unsigned int low, unsigned int high)
+{
+    auto i{low - 1};
+    auto pivot = data_vec.at(high);
+
+    for (unsigned int j{low}; j < high; ++j)
+    {
+        if (data_vec.at(j) <= pivot)
+        {
+            ++i;
+            std::swap(data_vec.at(i), data_vec.at(j));
+        }
+    }
+
+    std::swap(data_vec.at(i + 1), data_vec.at(high));
+
+    return i + 1;
+}
+
 /**
  * @brief
  * Quick Sort Algorithm (ascending)
@@ -250,6 +274,16 @@ void insertion_sort_descending(std::vector<T> &data_vec, SDL_Renderer *renderer)
 template <typename T>
 void quick_sort_ascending(std::vector<T> &data_vec, SDL_Renderer *renderer)
 {
+    auto low{0};
+    auto high{data_vec.size() - 1};
+
+    if (low < high)
+    {
+        auto pivot = partition(data_vec, low, high);
+
+        quick_sort_ascending(data_vec, low, pivot - 1);
+        quick_sort_ascending(data_vec, pivot + 1, high);
+    }
 }
 
 /**

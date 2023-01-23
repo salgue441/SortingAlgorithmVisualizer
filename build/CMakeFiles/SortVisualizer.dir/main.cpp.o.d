@@ -331,4 +331,5 @@ CMakeFiles/SortVisualizer.dir/main.cpp.o: \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
  /usr/local/include/SDL2/SDL_version.h \
  /usr/local/include/SDL2/SDL_locale.h /usr/local/include/SDL2/SDL_misc.h \
- /mnt/d/developer/SortVisualizer/sorts.h
+ /mnt/d/developer/SortVisualizer/sorts.h /usr/include/c++/11/cassert \
+ /usr/include/assert.h
